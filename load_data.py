@@ -4,11 +4,11 @@ import yfinance as yf
 import pandas as pd
 
 
-def load_data():
+def data():
     # Read file
     constituents = pd.read_csv('sp500.csv')
     constituents = constituents[["Symbol","Security","Sector","GICS Sub-Industry"]]
-
+    # constituents = constituents.head()
     # Find Data
     symbols = constituents["Symbol"]
 
@@ -23,8 +23,11 @@ def load_data():
     avgVolume = []
     trailingPE = []
 
+    counter = 0
 
     for symbol in symbols:
+        # if counter == 5:
+            break
         ticker = yf.Ticker(symbol)
         history = ticker.history(period='1d').reset_index().iloc[:1]
         opens.append(history["Open"])
@@ -47,7 +50,7 @@ def load_data():
         except KeyError:
             print(f"{ticker}-------------- NOT FOUND")
             trailingPE.append(0)
-    
+        # counter = counter + 1
 
     # Add to dataframe
 
@@ -63,12 +66,17 @@ def load_data():
     constituents["Trailing PE"] = trailingPE
 
     # Get necessary info 
-
+# 505
     for x in range(505):
-    constituents["Open"][x] = opens[x][0]
-    constituents["Close"][x] = close[x][0]
-    constituents["High"][x] = highs[x][0]
-    constituents["Low"][x] = lows[x][0]    
+        try:
+            constituents["Open"][x] = opens[x][0]
+            constituents["Close"][x] = close[x][0]
+            constituents["High"][x] = highs[x][0]
+            constituents["Low"][x] = lows[x][0]  
+        except IndexError:
+            print("Out of range")
+            constituents = constituents.drop(x)
+ 
 
     constituents["dividendYield"] = divYield
     constituents["beta"] = beta
@@ -77,9 +85,11 @@ def load_data():
     constituents["marketCap"] = marketCap
 
     # Delete duplicate divYield
-    del constituents["divYield"]
+    # del constituents["divYield"]
 
-    return constituents
+    test = constituents.to_dict('records')
+
+    return test
 
 
 
