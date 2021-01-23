@@ -19,7 +19,7 @@ mycol = mydb["stock"]
 def test():
     inventory = list(mycol.find())
     print("====================")
-    print(inventory)
+    # print(inventory)
     print("====================")
 
     
@@ -36,8 +36,15 @@ def test():
 
     print("====================")
 
+    x = json.loads(inventory)
+    print(x)
+    print(type(x))
+    print(x[0])
+    print(type(x[0]))
+
+
     with open('stock.json', 'w') as json_file:
-       json.dump(inventory, json_file)
+        json.dump(x, json_file)
 
     return jsonify(inventory)
 
