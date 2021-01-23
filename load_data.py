@@ -27,7 +27,8 @@ def data():
 
     for symbol in symbols:
         # if counter == 5:
-            # break
+        #     break
+
         ticker = yf.Ticker(symbol)
         history = ticker.history(period='1d').reset_index().iloc[:1]
         opens.append(history["Open"])
@@ -50,7 +51,7 @@ def data():
         except KeyError:
             print(f"{ticker}-------------- NOT FOUND")
             trailingPE.append(0)
-        # counter = counter + 1
+        counter = counter + 1
 
     # Add to dataframe
 
@@ -76,6 +77,8 @@ def data():
         except IndexError:
             print("Out of range")
             constituents = constituents.drop(x)
+        if (constituents["Symbol"][x] == "ZTS"):
+            break
  
 
     constituents["dividendYield"] = divYield

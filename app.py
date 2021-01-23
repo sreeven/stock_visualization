@@ -1,21 +1,49 @@
-from flask import Flask
+# Imports
+from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
-import load_data
+import pymongo
+from flask import Flask, jsonify
+import io
+import json
+from bson import ObjectId
+from flask.json import JSONEncoder
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/stocks"
-mongo = PyMongo(app)
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = myclient["sp500"]
 
-values = load_data.data()
+mycol = mydb["stock"]
 
-stocks.insert_many(values)
+@app.route("/")
+def test():
+    inventory = list(mycol.find())
+    print("====================")
+    print(inventory)
+    print("====================")
+
+    
+    class JSONEncoder(json.JSONEncoder):
+        def default(self, o):
+            if isinstance(o, ObjectId):
+                return str(o)
+            return json.JSONEncoder.default(self, o)
+    print("====================")
+
+    inventory = JSONEncoder().encode(inventory)
+    print(inventory)
+    print(type(inventory))
+
+    print("====================")
+
+    with open('stock.json', 'w') as json_file:
+       json.dump(inventory, json_file)
+
+    return jsonify(inventory)
+
+test()
 
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
-
-# @app.route("/")
-# def home_page():
-#     online_users = mongo.db.users.find({"online": True})
-#     return render_template("index.html",
-#         online_users=online_users)
