@@ -27,7 +27,7 @@ def data():
 
     for symbol in symbols:
         # if counter == 5:
-            break
+            # break
         ticker = yf.Ticker(symbol)
         history = ticker.history(period='1d').reset_index().iloc[:1]
         opens.append(history["Open"])
