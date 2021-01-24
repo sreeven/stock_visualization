@@ -1,5 +1,4 @@
 # Imports
-
 import yfinance as yf
 import pandas as pd
 
@@ -12,6 +11,18 @@ def data():
 
     # Find Data
     symbols = constituents["Symbol"]
+
+    opens = []
+    lows = []
+    highs = []
+    close = []
+    divYield = []
+    marketCap = []
+    beta = []
+    forwardPE = []
+    avgVolume = []
+    trailingPE = []
+    counter = 1
 
     opens = []
     lows = []
@@ -40,25 +51,21 @@ def data():
             beta.append(info['beta'])
             forwardPE.append(info['forwardPE'])
             avgVolume.append(info["averageVolume"])
+            trailingPE.append(info['trailingPE'])
+
             
             print(f"{counter} of 504: {symbol}")
 
         except KeyError:
             print(f"{ticker}-------------- TRAILING PE NOT FOUND")
             trailingPE.append(0)
-
-    #         opens.append(0)
-    #         lows.append(0)
-    #         highs.append(0)
-    #         close.append(0)
-    #         divYield.append(0)
-    #         marketCap.append(0)
-    #         beta.append(0)
-    #         forwardPE.append(0)
-    #         avgVolume.append(0)
-    #         trailingPE.append(0)
                 
         counter = counter + 1
+
+    print("-------------")
+    print(len(trailingPE))
+    print(len(constituents))
+    print("-------------")
 
     constituents["Open"] = opens
     constituents["Low"] = lows
@@ -83,6 +90,10 @@ def data():
     constituents["dividendYield"] = constituents["dividendYield"].astype("float")
 
     record = constituents.to_dict('records')
+
+    print("------------------")
+    print("Successful!")
+    print("------------------")
 
     return record
     

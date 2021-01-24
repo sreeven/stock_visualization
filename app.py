@@ -18,9 +18,9 @@ mycol = mydb["stock"]
 @app.route("/")
 def test():
     inventory = list(mycol.find())
-    print("====================")
-    # print(inventory)
-    print("====================")
+    # print("====================")
+    # # print(inventory)
+    # print("====================")
 
     
     class JSONEncoder(json.JSONEncoder):
@@ -28,19 +28,19 @@ def test():
             if isinstance(o, ObjectId):
                 return str(o)
             return json.JSONEncoder.default(self, o)
-    print("====================")
+    # print("====================")
 
     inventory = JSONEncoder().encode(inventory)
-    print(inventory)
-    print(type(inventory))
+    # print(inventory)
+    # print(type(inventory))
 
-    print("====================")
+    # print("====================")
 
     x = json.loads(inventory)
-    print(x)
-    print(type(x))
-    print(x[0])
-    print(type(x[0]))
+    # print(x)
+    # print(type(x))
+    # print(x[0])
+    # print(type(x[0]))
 
 
     with open('stock.json', 'w') as json_file:
@@ -50,7 +50,11 @@ def test():
 
 test()
 
+print("----------------")
+print("Successful!")
+print("----------------")
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
