@@ -46,15 +46,21 @@ def test():
     with open('stock.json', 'w') as json_file:
         json.dump(x, json_file)
 
-    return jsonify(inventory)
+        
 
-test()
+    return jsonify(x)
 
-print("----------------")
-print("Successful!")
-print("----------------")
+def test_connection():
+    with app.app_context():
+        #test code
+        test()
+
+        print("----------------")
+        print("Successful!")
+        print("----------------")
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+        if __name__ == "__main__":
+            app.run(debug=True)
 
+test_connection()
