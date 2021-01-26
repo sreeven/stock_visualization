@@ -89,6 +89,12 @@ def data():
     constituents["Trailing PE"] = constituents["Trailing PE"].astype("float")
     constituents["dividendYield"] = constituents["dividendYield"].astype("float")
 
+    # Fill null with 0
+
+    constituents['beta'] = constituents['beta'].fillna(0)
+    constituents['forwardPE'] = constituents['forwardPE'].fillna(0)
+    constituents['dividendYield'] = constituents['dividendYield'].fillna(0)
+
     record = constituents.to_dict('records')
 
     print("------------------")

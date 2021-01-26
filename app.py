@@ -17,7 +17,35 @@ mycol = mydb["stock"]
 
 @app.route("/")
 def test():
-    inventory = list(mycol.find())
+
+    # mycol.update({}, {'$unset': {'dividendYield':"NaN"}}, multi=True)
+    test = mycol.find()
+    print(test)
+    inventory = list(test)
+    # inventory.updateMany({}, { $unset : { description : 1} })
+
+    # inventory.updateMany({}, { unset : { dividendYield : 1} })
+#     db.collection.updateMany(
+#    <filter>,
+#    <update>,
+#    {
+#      upsert: <boolean>,
+#      writeConcern: <document>,
+#      collation: <document>,
+#      arrayFilters: [ <filterdocument1>, ... ],
+#      hint:  <document|string>        // Available starting in MongoDB 4.2.1
+#    }
+# )
+
+
+    # print("====================")
+
+    # print("====================")
+
+    # print("====================")
+
+    # print("====================")
+
     # print("====================")
     # # print(inventory)
     # print("====================")
