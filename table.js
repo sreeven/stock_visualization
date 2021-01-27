@@ -24,7 +24,7 @@ d3.json("stock.json").then(function(data){
     function handleClick() {
 
         const ticker = d3.select("#stock-to-filter").property("value");
-        let filteredData = tableData;
+        let filteredData = data;
       
     
         if (ticker) {
