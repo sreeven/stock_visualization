@@ -106,10 +106,14 @@ d3.json("stock.json").then(function(data){
       var data = [trace1];
       
       var layout = {
-        title: 'Market Cap by Sector',
+        title: "Market Cap by Sector",
         showlegend: false,
         height: 600,
         width: 600,
+        font: {
+            family: 'Arial, monospace,',
+            size: 14
+        },
         yaxis: {range: [0, max]}
       };
       
@@ -155,15 +159,19 @@ d3.json("stock.json").then(function(data){
             // ctx.canvas.width = 60;
             // ctx.canvas.height = 60;
             data: data,
-            option:{
-                title: "Dividend Yield per Sector",
+            options: {
+                title: {
+                display: true, 
+                fontSize: 18,
+                padding: 40,
+                text: "Dividend Yield per Sector"},
 
                 maintainAspectRatio: false,
                 responsive: true,
                 legend: {
                     display: true
                 },
-
+                
             }
         });
 

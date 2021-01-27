@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="row">
                   <div class="col-md-12 jumbotron text-center">
-                    <h3>S&P 500 Stocks</h3>
+                    <h1>S&P 500 Stocks</h1>
                     <p>Use the interactive charts below to explore the dataset</p>
                   </div>
                 </div>
@@ -44,12 +44,34 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                  <div style= "position:absolute; top:60px; right:20px; width:600px; height:600px;">
-                      <h4>Dividend Yield Summary</h4>
+                  <div style= "position:absolute; top:-55px; right:20px; width:600px; height:600px;">
                     <canvas id="cv_values"></canvas>  
                     <!-- <div id="pie-chart"></div> -->
                     <canvas id="myChart" width="200" height="200"></canvas>
 
+                  </div>
+
+
+                <label for="stockInput">Stock</label>
+                <input type="text" class="form-control" id="stockInput" placeholder="Enter a Ticker"> 
+               
+             </div>
+             <button id="submit" type="submit" class="btn btn-default">Search</button>
+                  <div class="col-md-10">
+                    <div id="table-area" class="">
+                      <table id="ufo-table" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th class="table-head">Symbol</th>
+                            <th class="table-head">Open</th>
+                            <th class="table-head">Close</th>
+                            <th class="table-head">High</th>
+                            <th class="table-head">Low</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,6 +86,7 @@
                
              </div>
              <button id="submit" type="submit" class="btn btn-default">Search</button> -->
+
 
 
 
