@@ -58,15 +58,25 @@
              </div>
              <button id="submit" type="submit" class="btn btn-default">Search</button>
                   <div class="col-md-10">
-                    <div id="table-area" class="">
+                    <div id="table-area">
                       <table id="ufo-table" class="table table-striped">
                         <thead>
                           <tr>
+                            <th class="table-head">Object ID</th>
                             <th class="table-head">Symbol</th>
+                            <th class="table-head">Security</th>
+                            <th class="table-head">Sector</th>
+                            <th class="table-head">Sub-Industry</th>
                             <th class="table-head">Open</th>
+                            <th class="table-head">Low</th>
                             <th class="table-head">Close</th>
                             <th class="table-head">High</th>
-                            <th class="table-head">Low</th>
+                            <th class="table-head">Beta</th>
+                            <th class="table-head">forwardPE</th>
+                            <th class="table-head">Average Volume</th>
+                            <th class="table-head">Market Cap</th>
+                            <th class="table-head">Trailing PE</th>
+                            <th class="table-head">Dividend Yield</th>
                           </tr>
                         </thead>
                         <tbody></tbody>
@@ -75,9 +85,7 @@
                   </div>
                 </div>
               </div>
-              
-              
-
+  
 
               <!-- select id="stockInput" onchange="optionChanged(this.value)"></select> -->
               <!--div class="well">
@@ -86,18 +94,16 @@
                
              </div>
              <button id="submit" type="submit" class="btn btn-default">Search</button> -->
-
-
-
-
               <!-- <svg width="50" height="50"></svg> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="data.js"></script>
+    <script src="table.js"></script>
+
 
     <!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js%22%3E"></script> -->
+  
 
-    <script src="stock.json"></script>
 
 </html>
